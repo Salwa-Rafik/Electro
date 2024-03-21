@@ -23,7 +23,10 @@ function NavBar() {
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
-
+    const truncateTitle = (title) => {
+        const words = title.split(" ");
+        return words.slice(0, 3).join(" ");
+    }; 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/categories')
             .then(response => response.json())
@@ -149,11 +152,11 @@ function NavBar() {
                             <span>{category}</span>
                             <AiOutlineDown className="ml-2 text-sm " />
                             {showMenu && selectedCategory === category && (
-                                <div className="absolute top-full left-0 bg-white border-t-4 border-yellow-400  shadow-md p-4 w-full ">
+                                <div className="absolute top-full left-0 grid grid-cols-3 bg-white border-t-4 border-yellow-400  shadow-md p-4 w-[700px] z-[900] mx-auto ">
                                     {products.map((product, index) => (
-                                        <div key={index} className="flex items-center space-x-2">
-                                            <img src={product.image} alt={product.title} className="w-12 h-12" />
-                                            <span>{product.title}</span>
+                                        <div key={index} className=" space-x-2">
+                                            <img src={product.image} alt={truncateTitle(product.title)} className="w-12 h-12" />
+                                            <span>{truncateTitle(product.title)}</span>
                                         </div>
                                     ))}
                                 </div>

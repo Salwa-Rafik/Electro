@@ -16,7 +16,6 @@ function HomePage() {
     <div>
         <NavBar/>
         <HeaderSlider/>
-
         <Sec1/>
         <CenterNav/>
         <Telivision/>
@@ -26,7 +25,6 @@ function HomePage() {
         <RecentlyViewed/>
         <BrandsSlider/>
         <Footer/>
-
     </div>
   )
 }
